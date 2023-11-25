@@ -1,0 +1,6 @@
+colors = input("Enter comma-separated colors: ")
+c = colors.split(",")
+colors1 = input("Enter comma-separated colors: ")
+c1 = colors.split(",")
+c2 = list(set(c) - set(c1))
+print(c2)
