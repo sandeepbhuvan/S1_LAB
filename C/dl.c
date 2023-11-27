@@ -8,7 +8,7 @@ struct node
     struct node *next;
 };
 
-struct head= NULL;
+struct node* head= NULL;
 
 void insertAtBeginning(int data)
 {
