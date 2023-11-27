@@ -91,6 +91,24 @@ void deleteAtPosition(int position) {
 	free(temp);
 }
 
+void search(int data) {
+	if (head == NULL) {
+		printf("List is empty\n");
+		return;
+	}
+	struct node* ptr = head;
+	int position = 1;
+	while (ptr != NULL) {
+		if (ptr->data == data) {
+			printf("%d found at position %d\n", data, position);
+			return;
+		}
+		ptr = ptr->next;
+		position++;
+	}
+	printf("%d not found\n", data);
+}
+
 void display() {
 	if (head == NULL) {
 		printf("List is empty\n");
