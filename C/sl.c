@@ -10,6 +10,13 @@ struct node {
 struct node* head = NULL;
 
 void insertAtBeginning(int data) {
+	if (head == NULL) {
+		struct node* temp = (struct node*)malloc(sizeof(struct node));
+		temp->data = data;
+		temp->next = NULL;
+		head = temp;
+		return;
+	}
 	struct node* temp = (struct node*)malloc(sizeof(struct node));
 	temp->data = data;
 	temp->next = head;
@@ -34,6 +41,7 @@ void insertAtEnd(int data) {
 void insertAtPosition(int data, int position) {
 	struct node* temp = (struct node*)malloc(sizeof(struct node));
 	temp->data = data;
+	temp->next = NULL;
 	if (position == 1) {
 		temp->next = head;
 		head = temp;
@@ -125,6 +133,7 @@ void display() {
 int main() {
 	int choice, data, position;
 	while (1) {
+		printf("\n");
 		printf("1. Insert at beginning\n");
 		printf("2. Insert at end\n");
 		printf("3. Insert at position\n");
