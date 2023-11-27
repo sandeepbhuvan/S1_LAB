@@ -131,8 +131,9 @@ int main() {
 		printf("4. Delete at beginning\n");
 		printf("5. Delete at end\n");
 		printf("6. Delete at position\n");
-		printf("7. Display\n");
-		printf("8. Exit\n");
+		printf("7. Search\n");
+		printf("8. Display\n");
+		printf("9. Exit\n");
 		printf("Enter your choice: ");
 		scanf("%d", &choice);
 		switch (choice) {
@@ -165,9 +166,14 @@ int main() {
 				deleteAtPosition(position);
 				break;
 			case 7:
-				display();
+				printf("Enter data: ");
+				scanf("%d", &data);
+				search(data);
 				break;
 			case 8:
+				display();
+				break;
+			case 9:
 				exit(0);
 			default:
 				printf("Invalid choice\n");
