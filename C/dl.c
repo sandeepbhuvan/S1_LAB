@@ -175,7 +175,7 @@ void reverseDisplay()
 }
 
 void search(int data)
-{
+{   int flag=0;
     int count=0;
     if(head == NULL)
     {
@@ -188,11 +188,16 @@ void search(int data)
         {
             if(temp->data == data)
             {
-                printf("Element found at position %d\n",count+1);
+                flag =1;
                 break;
             }
             count++;
             temp = temp->next;
+        }
+        if(flag == 0)
+        { printf("\nElement not found\n");}
+        else{
+            printf("\nElement found at position %d\n",count+1);
         }
     }
 }
@@ -201,8 +206,7 @@ void main()
 {
     int choice, data, position;
     while(1)
-    {
-        printf("\n1. Insert at beginning\n");
+    {   printf("\n1. Insert at beginning\n");
         printf("2. Insert at end\n");
         printf("3. Insert at position\n");
         printf("4. Delete at beginning\n");

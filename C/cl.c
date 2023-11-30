@@ -84,7 +84,7 @@ void search(int item)
             }  
             ptr = ptr -> next;  
         }while(ptr != head);  
-        if(ptr == head)  
+        if(ptr == head)
         {  
             printf("\nItem not found\n");  
         }  
