@@ -68,14 +68,15 @@ void insertAtPosition(int data, int position)
         struct node *temp = head;
         int i = 1;
         while(i < position-1)
-        {
+        { 
             temp = temp->next;
             i++;
         }
         newNode->next = temp->next;
+        newNode->prev = temp;
         temp->next->prev = newNode;
         temp->next = newNode;
-        newNode->prev = temp;
+       
     }
 }
 
@@ -113,7 +114,7 @@ void deleteAtEnd()
 }
 
 void deleteAtPosition(int position)
-{
+{   struct node* del;
     if(head == NULL)
     {
         printf("List is empty");
@@ -123,13 +124,15 @@ void deleteAtPosition(int position)
         struct node *temp = head;
         int i = 1;
         while(i < position-1)
-        {
+        {   
             temp = temp->next;
             i++;
         }
-        temp->next = temp->next->next;
-        temp->next->prev = temp;
-        free(temp);
+        del = temp->next;
+        printf("%d is deleted \n",del->data);
+        temp->next = del->next;
+        del->next->prev = temp;
+        free(del);
     }
 }
 
@@ -144,7 +147,7 @@ void display()
         struct node *temp = head;
         while(temp != NULL)
         {
-            printf("%d", temp->data);
+            printf("%d ", temp->data);
             temp = temp->next;
         }
     }
@@ -165,7 +168,7 @@ void reverseDisplay()
         }
         while(temp != NULL)
         {
-            printf("%d", temp->data);
+            printf("%d ", temp->data);
             temp = temp->prev;
         }
     }
@@ -173,6 +176,7 @@ void reverseDisplay()
 
 void search(int data)
 {
+    int count=0;
     if(head == NULL)
     {
         printf("List is empty");
@@ -184,9 +188,10 @@ void search(int data)
         {
             if(temp->data == data)
             {
-                printf("Element found");
+                printf("Element found at position %d\n",count+1);
                 break;
             }
+            count++;
             temp = temp->next;
         }
     }
@@ -197,7 +202,7 @@ void main()
     int choice, data, position;
     while(1)
     {
-        printf("1. Insert at beginning\n");
+        printf("\n1. Insert at beginning\n");
         printf("2. Insert at end\n");
         printf("3. Insert at position\n");
         printf("4. Delete at beginning\n");
@@ -205,7 +210,8 @@ void main()
         printf("6. Delete at position\n");
         printf("7. Display\n");
         printf("8. Search\n");
-        printf("9. Exit\n");
+        printf("9. Reverse Display\n");
+        printf("10. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
         switch(choice)
@@ -247,6 +253,9 @@ void main()
                 search(data);
                 break;
             case 9:
+                reverseDisplay();
+                break;
+            case 10:
                 exit(0);
             default:
                 printf("Invalid choice");
