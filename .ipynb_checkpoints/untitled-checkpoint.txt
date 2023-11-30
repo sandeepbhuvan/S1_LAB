@@ -1,0 +1,1 @@
+sore_throat,fever,swollen_glands

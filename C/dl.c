@@ -150,6 +150,27 @@ void display()
     }
 }
 
+void reverseDisplay()
+{
+    if(head == NULL)
+    {
+        printf("List is empty");
+    }
+    else
+    {
+        struct node *temp = head;
+        while(temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        while(temp != NULL)
+        {
+            printf("%d", temp->data);
+            temp = temp->prev;
+        }
+    }
+}
+
 void search(int data)
 {
     if(head == NULL)
