@@ -1,0 +1,3 @@
+from graphics.threeD.cuboid import *
+area()
+perimeter()

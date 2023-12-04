@@ -25,12 +25,13 @@ h = int(input("Enter balance of account 2: "))
 account2 = Bank(e,f,g,h)
 
 # Compare their balances
-if account1.balance > account2.balance:
-    print("Account 1 has a larger balance.")
-elif account1.balance < account2.balance:
-    print("Account 2 has a larger balance.")
-else:
-    print("Both accounts have the same balance.")
+def cmpbal():
+    if account1.balance > account2.balance:
+        print("Account 1 has a larger balance.")
+    elif account1.balance < account2.balance:
+        print("Account 2 has a larger balance.")
+    else:
+        print("Both accounts have the same balance.")
 
 # Deposit and withdraw from account 1
 while(1):
@@ -40,7 +41,8 @@ while(1):
     print("Enter 4 to deposit to account 2")
     print("Enter 5 to check balance of account 1")
     print("Enter 6 to check balance of account 2")
-    print("Enter 7 to exit")
+    print("Enter 7 to compare balances of account 1 and account 2")
+    print("Enter 8 to exit")
     choice = int(input("Enter choice: "))
     if choice == 1:
         amount = int(input("Enter amount to deposit: "))
@@ -63,6 +65,8 @@ while(1):
     elif choice == 6:
         print("Balance of account 2 is: ", account2.balance)
     elif choice == 7:
+        cmpbal()
+    elif choice == 8:
         break
     else:
         print("Invalid choice")

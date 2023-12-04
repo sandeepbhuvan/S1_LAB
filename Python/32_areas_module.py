@@ -1,5 +1,5 @@
 # imported package using 'as' 
-import graphics as g 
+import graphics.threeD as g 
 g.cuboid.area()
 g.cuboid.perimeter()
 g.sphere.area()
