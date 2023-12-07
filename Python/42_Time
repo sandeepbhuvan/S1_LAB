@@ -4,16 +4,19 @@ class Time:
         self.__minutes = minutes
         self.__seconds = seconds
 
-    def convert_to_seconds(self):
-        return self.__hours * 3600 + self.__minutes * 60 + self.__seconds
-
     def __add__(self, other):
-        a = self.convert_to_seconds() + other.convert_to_seconds()
-        if a/3600 > 24:
-            a = a - (a%24)*3600
-            return a/3600
-        else:
-            return a/3600 
+        hours = self.__hours + other.__hours
+        minutes = self.__minutes + other.__minutes
+        seconds = self.__seconds + other.__seconds
+        if seconds >= 60:
+            minutes += 1
+            seconds -= 60
+        if minutes >= 60:
+            hours += 1
+            minutes -= 60
+        if hours >= 24:
+            hours -= 24
+        return f"{hours}:{minutes}:{seconds}"
 
 print("Enter the hours, minutes and seconds for the first time:")
 hours1 = int(input("Hours: "))
