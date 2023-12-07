@@ -1,0 +1,28 @@
+class Time:
+    def __init__(self, hours, minutes, seconds):
+        self.__hours = hours
+        self.__minutes = minutes
+        self.__seconds = seconds
+
+    def convert_to_seconds(self):
+        return self.__hours * 3600 + self.__minutes * 60 + self.__seconds
+
+    def __add__(self, other):
+        a = self.convert_to_seconds() + other.convert_to_seconds()
+        if a/3600 > 24:
+            a = a - (a%24)*3600
+            return a/3600
+        else:
+            return a/3600 
+
+print("Enter the hours, minutes and seconds for the first time:")
+hours1 = int(input("Hours: "))
+minutes1 = int(input("Minutes: "))
+seconds1 = int(input("Seconds: "))
+print("Enter the hours, minutes and seconds for the second time:")
+hours2 = int(input("Hours: "))
+minutes2 = int(input("Minutes: "))
+seconds2 = int(input("Seconds: "))
+time1 = Time(hours1, minutes1, seconds1)
+time2 = Time(hours2, minutes2, seconds2)
+print("The sum of the times is", time1 + time2, "hours")
